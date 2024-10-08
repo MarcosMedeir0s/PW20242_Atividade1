@@ -16,6 +16,6 @@ SQL_INSERIR = """
 """
 
 SQL_EXCLUIR = """
-    DELETE FROM USUARIO
+    DELETE FROM produto
     WHERE id=?
 """
