@@ -32,8 +32,12 @@ def post_cadastro(
     categoria: str = Form(...)):  # Adicionando categoria
     produto = Produto(0, nome, descricao, estoque, preco, categoria)
     produto = produto_repo.inserir(produto)
-    return RedirectResponse('/cadastro_recebido', 303)
-
+    if post_cadastro:
+        return RedirectResponse('/cadastro_recebido', 303)
+    else:
+        return RedirectResponse('/cadastro', 303)
+    
+    
 @app.get("/cadastro_recebido")
 def get_cadastro_recebido(request: Request):
     return templates.TemplateResponse('index.html', {"request": request})
